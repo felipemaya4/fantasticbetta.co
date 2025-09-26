@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantastic Betta - Tu Rincón de Paz y Responsabilidad</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES Y ESTILOS GLOBALES --- */
+        :root {
+            --primary-color: #0d47a1; /* Azul profundo del logo */
+            --secondary-color: #1976d2; /* Azul más brillante */
+            --accent-color: #ff6f61; /* Coral/rojo del logo */
+            --dark-color: #263238; /* Gris oscuro para texto */
+            --light-color: #ffffff;
+            --background-color-light: #f8f8f8; /* Un gris muy claro para el fondo */
+            --background-color-dark: #eee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--background-color-light);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary-color);
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        h3 {
+             font-size: 1.8rem;
+        }
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 25px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--light-color);
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #ff8a80;
+            transform: scale(1.05);
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            height: 50px; /* Ajusta el tamaño de tu logo */
+        }
+        .navbar-logo span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-left: 10px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .navbar-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 120vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-color);
+            background: url('img/logo-corto.png') no-repeat center; /* REEMPLAZA ESTA IMAGEN */
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.65); /* Capa oscura para legibilidad */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 0.8rem;
+            color: var(--light-color);
+        }
+
+        .hero h3 {
+            font-size: 1.8rem;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: var(--light-color);
+        }
+        
+        /* --- SECCIÓN SOBRE NOSOTROS / MISIÓN --- */
+        #about {
+            background-color: var(--light-color);
+            padding: 120px 0;
+        }
+        #about h2 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        #about h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 500;
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        .about-text {
+            flex: 2;
+            padding-right: 30px;
+        }
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .about-image i {
+            font-size: 8rem;
+            color: var(--secondary-color);
+        }
+
+        /* --- SECCIÓN DE BENEFICIOS --- */
+        #benefits {
+            background-color: var(--background-color-dark);
+        }
+        #benefits h2 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        #benefits h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-card i {
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+        .benefit-card p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        /* --- SECCIÓN DE GALERÍA --- */
+        #gallery {
+            background-color: var(--light-color);
+        }
+        #gallery h2 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        #gallery p {
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px; /* Altura fija para la galería */
+            object-fit: cover; /* Asegura que la imagen cubra el área */
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--light-color);
+            padding: 30px 20px 15px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-cta {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        /* --- SECCIÓN DE TESTIMONIOS --- */
+        #testimonials {
+            background-color: var(--background-color-dark);
+        }
+        #testimonials h2 {
+            color: var(--dark-color);
+        }
+        #testimonials h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 500;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .testimonial-card {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #444;
+        }
+        
+        .testimonial-card .stars {
+            color: #fdd835; /* Color amarillo estrella */
+            margin-bottom: 10px;
+        }
+        
+        .testimonial-card cite {
+            font-weight: 700;
+            font-style: normal;
+            display: block;
+            color: var(--dark-color);
+        }
+        
+        /* --- SECCIÓN DE CONTACTO --- */
+        #contact {
+            background-color: var(--light-color);
+        }
+        #contact h2 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+        #contact h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .contact-content {
+            display: flex;
+            gap: 50px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .contact-form-container {
+            flex: 2;
+            min-width: 300px;
+        }
+        .contact-info-container {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--background-color-dark);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .contact-info-container h4 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .contact-info-container p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .contact-info-container p i {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            margin-top: 25px;
+            display: flex;
+            gap: 20px;
+            justify-content: center; /* Centrar en móvil */
+        }
+        .social-links a {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+        }
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .contact-form .btn {
+            align-self: flex-start;
+        }
+        
+        .map-container {
+            margin-top: 40px;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-color);
+            color: #ccc;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        footer p {
+            margin: 0;
+        }
+
+        /* --- ANIMACIONES DE SCROLL --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- LIGHTBOX (PARA GALERÍA) --- */
+        .lightbox {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1001; /* Debe estar por encima de todo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            background-color: var(--light-color);
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 70vh; /* Ajusta la altura de la imagen en el lightbox */
+            display: block;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-caption {
+            color: var(--dark-color);
+            font-size: 1.1rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #aaa;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: var(--accent-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .navbar-logo img {
+                height: 40px;
+            }
+            .navbar-logo span {
+                font-size: 1.3rem;
+            }
+            .nav-links li {
+                margin-left: 20px;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero h3 {
+                font-size: 1.4rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-text {
+                padding-right: 0;
+            }
+            .about-image {
+                order: -1; /* Pone la imagen arriba en móvil */
+                margin-bottom: 30px;
+            }
+            .contact-content {
+                flex-direction: column;
+            }
+            .contact-form-container, .contact-info-container {
+                min-width: unset;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Oculta los enlaces en móviles */
+                flex-direction: column;
+                position: absolute;
+                top: 70px; /* Debajo de la navbar */
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+            .nav-links a {
+                padding: 10px 0;
+                display: block;
+                
+            }
+            .menu-toggle {
+                display: block; /* Muestra el icono de menú */
+            }
+            .navbar-btn {
+                display: none; /* Oculta el botón CTA en el navbar en móvil, si se desea */
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero h3 {
+                font-size: 1.1rem;
+            }
+            section {
+                padding: 80px 0;
+            }
+            .benefits-grid, .gallery-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="#hero" class="navbar-logo">
+                <img src="img/logo-corto.png" alt="Fantastic Betta Logo">
+                </a>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#about">Nuestra Misión</a></li>
+                <li><a href="#benefits">Beneficios</a></li>
+                <li><a href="#gallery">Galería</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <a href="#contact" class="btn navbar-btn">¡Adopta el Tuyo!</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content fade-in">
+                <h1>Fantastic Betta: Tu Rincón de Paz y Responsabilidad.</h1>
+                <h3>Descubre la magia de un compañero que inspira tranquilidad y enseña el valor del cuidado.</h3>
+                <a href="#gallery" class="btn">Explora Nuestros Bettas</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="fade-in">Nuestra Pasión, Tu Tranquilidad.</h2>
+                <h3 class="fade-in">Más allá de la belleza, un compromiso con el bienestar y la educación.</h3>
+                <div class="about-content fade-in">
+                    <div class="about-text">
+                        <p>En Fantastic Betta, nos dedicamos a enriquecer la vida de las personas y familias en Tuluá, ofreciendo la belleza y serenidad de los peces Betta de la más alta calidad.</p>
+                        <p>Promovemos la acuariofilia responsable como una herramienta terapéutica que aporta calma y bienestar al hogar, y como una valiosa primera lección de responsabilidad y amor por la naturaleza para los más pequeños, todo a través de una mascota fascinante y fácil de mantener.</p>
+                        <p>Creemos que cada pequeño acuario puede ser un oasis, y cada Betta, un maestro silencioso.</p>
+                    </div>
+                    <div class="about-image">
+                        <i class="fa-solid fa-seedling"></i> </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits">
+            <div class="container">
+                <h2 class="fade-in">¿Por Qué un Betta? El Secreto de la Felicidad Acuática.</h2>
+                <h3 class="fade-in">Un pequeño compañero con un gran impacto positivo en tu vida.</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-card fade-in">
+                        <i class="fa-solid fa-spa"></i>
+                        <h4>Calma para tu Mente</h4>
+                        <p>La observación de sus movimientos gráciles disminuye el estrés y la ansiedad, ofreciendo un oasis de paz en tu día a día.</p>
+                    </div>
+                    <div class="benefit-card fade-in">
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+                        <h4>Maestro de Responsabilidad</h4>
+                        <p>Enseña a los niños el valor del cuidado y la conexión con la naturaleza, de forma divertida y sencilla.</p>
+                    </div>
+                    <div class="benefit-card fade-in">
+                        <i class="fa-solid fa-palette"></i>
+                        <h4>Belleza que Inspira</h4>
+                        <p>Cada Betta es una obra de arte viviente, con colores y aletas que transforman cualquier espacio en un punto focal.</p>
+                    </div>
+                    <div class="benefit-card fade-in">
+                        <i class="fa-solid fa-fish"></i>
+                        <h4>Fácil de Cuidar</h4>
+                        <p>Ideal para estilos de vida activos. Son mascotas de bajo mantenimiento, perfectas para apartamentos y oficinas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2 class="fade-in">Conoce a Nuestras Estrellas Acuáticas.</h2>
+                <p class="fade-in">Descubre la diversidad y la majestuosidad de cada ejemplar, seleccionados con amor y dedicación para tu hogar.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item fade-in" data-src="img/betta-halfmoon-large.jpg" data-caption="Betta 'Fuego' Halfmoon: Colores intensos y aletas majestuosas.">
+                        <img src="https://images.unsplash.com/photo-1608253844621-42502c463388?q=80&w=1974&auto=format&fit=crop" alt="Betta 'Fuego' Halfmoon">
+                        <div class="gallery-caption">Betta "Fuego" Halfmoon</div>
+                    </div>
+                    <div class="gallery-item fade-in" data-src="img/betta-crowntail-large.jpg" data-caption="Betta 'Zafiro' Crowntail: Elegancia real con aletas en forma de corona.">
+                        <img src="https://images.unsplash.com/photo-1599946347371-e8d124de1355?q=80&w=1964&auto=format&fit=crop" alt="Betta 'Zafiro' Crowntail">
+                        <div class="gallery-caption">Betta "Zafiro" Crowntail</div>
+                    </div>
+                    <div class="gallery-item fade-in" data-src="img/betta-dumbo-large.jpg" data-caption="Betta 'Fantasma' Dumbo: Con sus grandes aletas pectorales, parece volar.">
+                        <img src="https://images.unsplash.com/photo-1622287162716-f3c190264b39?q=80&w=1964&auto=format&fit=crop" alt="Betta 'Fantasma' Dumbo">
+                        <div class="gallery-caption">Betta "Fantasma" Dumbo</div>
+                    </div>
+                     <div class="gallery-item fade-in" data-src="img/betta-plakat-large.jpg" data-caption="Betta 'Relámpago' Plakat: Energético y compacto, ideal para acuarios plantados.">
+                        <img src="https://images.unsplash.com/photo-1609312061030-a9b0c5d336a9?q=80&w=1974&auto=format&fit=crop" alt="Betta 'Relámpago' Plakat">
+                        <div class="gallery-caption">Betta "Relámpago" Plakat</div>
+                    </div>
+                    <div class="gallery-item fade-in" data-src="img/betta-halfmoon-red-blue.jpg" data-caption="Betta Halfmoon Rojo y Azul: Una explosión de color en cada movimiento.">
+                        <img src="https://images.unsplash.com/photo-1624005114704-51c36ef44b79?q=80&w=1974&auto=format&fit=crop" alt="Betta Halfmoon Rojo y Azul">
+                        <div class="gallery-caption">Betta Halfmoon Rojo y Azul</div>
+                    </div>
+                    <div class="gallery-item fade-in" data-src="img/betta-super-delta.jpg" data-caption="Betta Super Delta: Aletas amplias y una presencia dominante.">
+                        <img src="https://images.unsplash.com/photo-1618395562725-d72111b2b804?q=80&w=1964&auto=format&fit=crop" alt="Betta Super Delta">
+                        <div class="gallery-caption">Betta Super Delta</div>
+                    </div>
+                </div>
+                <div class="gallery-cta fade-in">
+                    <a href="#contact" class="btn">Ver Disponibilidad y Precios</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2 class="fade-in">Experiencias que nos llenan de Orgullo.</h2>
+                <h3 class="fade-in">Lo que dicen nuestros clientes felices sobre sus Fantastic Bettas.</h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card fade-in">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Desde que 'Apolo' llegó a mi escritorio, mis días de trabajo son mucho más tranquilos. Es increíble la personalidad que tiene. ¡El servicio y la calidad de Fantastic Betta fue excepcional! Totalmente recomendado."</p>
+                        <cite>- Sofía R., Tuluá</cite>
+                    </div>
+                    <div class="testimonial-card fade-in">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <p>"Mis hijos están fascinados con 'Burbuja'. Aprenden mucho sobre responsabilidad y cuidado de una manera divertida. La guía de Fantastic Betta fue muy útil."</p>
+                        <cite>- Carlos M., Buga</cite>
+                    </div>
+                    <div class="testimonial-card fade-in">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Buscaba una mascota que no requiriera mucho espacio y el Betta superó mis expectativas. Mi oficina ahora tiene un punto de color y vida. ¡Gracias Fantastic Betta!"</p>
+                        <cite>- Laura G., Cali</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="fade-in">¿Listo para unirte a la familia Fantastic Betta?</h2>
+                <h3 class="fade-in">Estamos aquí para ayudarte a encontrar el compañero acuático perfecto.</h3>
+                <div class="contact-content">
+                    <div class="contact-form-container fade-in">
+                        <form action="#" method="POST" class="contact-form">
+                            <input type="text" name="name" placeholder="Tu Nombre" required>
+                            <input type="email" name="email" placeholder="Tu Email" required>
+                            <input type="text" name="subject" placeholder="Asunto">
+                            <textarea name="message" placeholder="Tu Mensaje" required></textarea>
+                            <button type="submit" class="btn">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                    <div class="contact-info-container fade-in">
+                        <h4>Información de Contacto</h4>
+                        <p><i class="fa-brands fa-whatsapp"></i> WhatsApp: +57 3158873509</p>
+                        <!--<p><i class="fa-solid fa-envelope"></i> Email: tu_email@fantasticbetta.com</p>-->
+                        <p><i class="fa-solid fa-location-dot"></i> Ubicación: Tuluá, Valle del Cauca</p>
+                        <p><i class="fa-solid fa-clock"></i> Horarios de Atención: L-V: 9am-6pm, S: 9am-1pm</p>
+                        <div class="social-links">
+                            <a href="https://instagram.com/fantasticbetta.co" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i> fantasticbetta.co</a>
+                            <!--<a href="https://facebook.com/[TuPagina]" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>-->
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Fantastic Betta. Todos los derechos reservados.</p>
+            <p>Hecho con <i class="fa-solid fa-heart" style="color: #ff6f61;"></i> en Tuluá, Valle del Cauca.</p>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="img/logo-corto.png" alt="Imagen de Betta en detalle">
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- NAVBAR STICKY Y TOGGLE MENÚ MÓVIL ---
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelector('.nav-links');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Cierra el menú móvil al hacer clic en un enlace
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // --- ANIMACIONES DE SCROLL (FADE-IN) ---
+        const fadeInElements = document.querySelectorAll('.fade-in');
+
+        const observerOptions = {
+            root: null, 
+            rootMargin: '0px',
+            threshold: 0.1 
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        fadeInElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // --- LIGHTBOX PARA LA GALERÍA ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const closeBtn = document.querySelector('.close-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                lightbox.style.display = 'flex'; // Usar flex para centrar
+                lightboxImg.src = item.dataset.src;
+                lightboxCaption.textContent = item.dataset.caption;
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) { // Si el clic es en el fondo oscuro
+                lightbox.style.display = 'none';
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+                lightbox.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Nombre de tu Emprendimiento] - Peces Betta Exclusivos</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES Y ESTILOS GLOBALES --- */
+        :root {
+            --primary-color: #0d47a1; /* Azul profundo y elegante */
+            --secondary-color: #1976d2; /* Azul más brillante */
+            --accent-color: #ff6f61; /* Un acento coral/rojo para los botones */
+            --dark-color: #263238; /* Gris oscuro para texto */
+            --light-color: #ffffff;
+            --background-color: #f4f7f9; /* Un gris muy claro para el fondo */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--background-color);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+        
+        /* --- HERO SECTION (SECCIÓN PRINCIPAL) --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--light-color);
+            /* REEMPLAZA ESTA IMAGEN DE FONDO */
+            background: url('https://images.unsplash.com/photo-1533134486753-c833f0ed4866?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Capa oscura para legibilidad */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero h3 {
+            font-size: 1.5rem;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--light-color);
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #ff8a80;
+            transform: scale(1.05);
+        }
+
+        /* --- SECCIÓN DE BENEFICIOS --- */
+        #benefits {
+            background-color: var(--light-color);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .benefit-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- SECCIÓN DE GALERÍA --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--light-color);
+            padding: 30px 20px 20px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* --- SECCIÓN DE TESTIMONIOS --- */
+        #testimonials {
+            background-color: var(--light-color);
+        }
+        
+        .testimonial-card {
+            max-width: 700px;
+            margin: 40px auto 0;
+            padding: 30px;
+            background-color: var(--background-color);
+            border-left: 5px solid var(--secondary-color);
+            border-radius: 5px;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial-card .stars {
+            color: #fdd835; /* Color amarillo estrella */
+            margin-bottom: 10px;
+        }
+        
+        .testimonial-card cite {
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        /* --- SECCIÓN DE CTA FINAL --- */
+        #final-cta {
+            background: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+        }
+
+        #final-cta h2 {
+            margin-bottom: 2rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--dark-color);
+            color: #ccc;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-content h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--light-color);
+        }
+
+        .social-links a {
+            color: #ccc;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-info {
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMACIONES DE SCROLL --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero h3 {
+                font-size: 1.2rem;
+            }
+
+            .benefits-grid, .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="hero" id="home">
+        <div class="hero-content">
+            <h1>Más que un Pez, una Obra de Arte Viva.</h1>
+            <h3>Descubre la Tranquilidad y el Color que un Betta Trae a tu Hogar.</h3>
+            <a href="#gallery" class="cta-button">👇 Encuentra tu Betta Ideal Hoy 👇</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="benefits">
+            <div class="container">
+                <h2 class="fade-in">¿Por Qué un Betta? El Secreto de la Felicidad Acuática</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card fade-in">
+                        <i class="fa-solid fa-brain"></i>
+                        <h3>Calma para tu Mente</h3>
+                        <p>Observar sus movimientos gráciles disminuye el estrés y la ansiedad. Tu Betta será tu punto de meditación personal.</p>
+                    </div>
+                    <div class="benefit-card fade-in">
+                        <i class="fa-solid fa-leaf"></i>
+                        <h3>Bajo Mantenimiento</h3>
+                        <p>Perfecto para estilos de vida ocupados. Con cuidados sencillos, tendrás un compañero vibrante y saludable.</p>
+                    </div>
+                    <div class="benefit-card fade-in">
+                        <i class="fa-solid fa-palette"></i>
+                        <h3>Belleza que Inspira</h3>
+                        <p>Cada Betta es una joya única con colores iridiscentes. Transforma cualquier rincón en un espectáculo visual.</p>
+                    </div>
+                    <div class="benefit-card fade-in">
+                        <i class="fa-solid fa-hand-sparkles"></i>
+                        <h3>Una Personalidad Única</h3>
+                        <p>Son curiosos, reconocen a sus dueños y puedes enseñarles trucos. Prepárate para sorprenderte.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2 class="fade-in">Cada Betta Tiene su Magia. ¿Cuál es la Tuya?</h2>
+                <p style="text-align: center;" class="fade-in">Seleccionamos a mano cada ejemplar para garantizar su salud, vitalidad y una belleza excepcional.</p>
+                <div class="gallery-grid">
+                     <div class="gallery-item fade-in">
+                        <img src="/assets/betta blue large.jpg" alt="Pez Betta Azul Grande">
+                        <div class="gallery-caption">Betta "Fuego"</div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="/assets/betta blue.jpg" alt="Pez Betta Azul">
+                        <div class="gallery-caption">Betta "Zafiro"</div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="/assets/betta white.jpg" alt="Pez Betta Blanco">
+                        <div class="gallery-caption">Betta "Fantasma"</div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="/assets/betta pink n blue.jpg" alt="Pez Betta Rosa y Azul">
+                        <div class="gallery-caption">Betta "Sueño"</div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="/assets/betta chihiro.jpg" alt="Pez Betta Blanco">
+                        <div class="gallery-caption">Betta "Fantasma"</div>
+                    </div>
+                     <div class="gallery-item fade-in">
+                        <img src="/assets/betta red.jpg" alt="Pez Betta Rojo">
+                        <div class="gallery-caption">Betta "Fuego"</div>
+                    </div>
+                </div>
+                <div class="gallery-cta fade-in">
+                    <a href="#contact" class="cta-button">Ver Catálogo Completo</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2 class="fade-in">No solo vendemos peces, creamos experiencias.</h2>
+                <div class="testimonial-card fade-in">
+                    <div class="stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p>"Desde que 'Apolo' llegó a mi escritorio, mis días de trabajo son mucho más tranquilos. ¡El servicio y la calidad de [Nombre de tu Emprendimiento] fue excepcional! Totalmente recomendado."</p>
+                    <cite>- Sofía R., Tuluá</cite>
+                </div>
+            </div>
+        </section>
+
+        <section id="final-cta">
+            <div class="container fade-in">
+                <h2>Tu Nuevo Amigo Acuático te Espera.</h2>
+                <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">No esperes más para transformar tu entorno con un compañero que mejora tu bienestar y llena tu espacio de vida y color.</p>
+                <a href="#contact" class="cta-button">👇 Quiero Elegir mi Betta Ahora 👇</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact">
+        <div class="container footer-content">
+            <h4>FANTASTIC BETTA</h4>
+            <div class="social-links">
+                <a href="https://wa.me/57[TuNumero]" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://instagram.com/[TuUsuario]" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://facebook.com/[TuPagina]" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            </div>
+            <div class="footer-info">
+                <p>📍 Tuluá, Valle del Cauca</p>
+                <p>&copy; 2025 Fantastic Betta - Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- JAVASCRIPT PARA ANIMACIONES DE SCROLL ---
+        // Este código hace que los elementos aparezcan suavemente cuando te desplazas hacia ellos.
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeInElements = document.querySelectorAll('.fade-in');
+
+            const observerOptions = {
+                root: null, // usa el viewport como el área de observación
+                rootMargin: '0px',
+                threshold: 0.1 // el elemento se considera visible cuando el 10% está en pantalla
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // deja de observar el elemento una vez que es visible
+                    }
+                });
+            }, observerOptions);
+
+            fadeInElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
